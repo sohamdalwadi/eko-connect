@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eko Firmware Flasher</title>
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Face section -->
+        <div class="yeti-face-section" aria-label="Yeti face">
+            <svg class="yeti-face-svg" id="yeti-face" viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+                    </filter>
+                    <radialGradient id="eyeGradient" cx="40%" cy="40%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4"/>
+                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
+                    </radialGradient>
+                </defs>
+
+                <!-- Main face body with rounded rectangle -->
+                <rect x="30" y="10" width="400" height="170" rx="45" ry="45" style="fill:var(--yeti-face-bg)" opacity="0.7"/>
+                <rect x="35" y="15" width="390" height="160" rx="40" ry="40" style="fill:var(--yeti-face-bg)"/>
+                
+                <!-- Face highlight for dimension -->
+                <ellipse cx="230" cy="65" rx="150" ry="40" style="fill:white" opacity="0.15"/>
+
+                <!-- Subtle cheeks gradient -->
+                <ellipse cx="95" cy="105" rx="42" ry="28" fill="#ff6b9d" opacity="0.08" filter="url(#softGlow)"/>
+                <ellipse cx="365" cy="105" rx="42" ry="28" fill="#ff6b9d" opacity="0.08" filter="url(#softGlow)"/>
+
+                <!-- Left eye white -->
+                <circle cx="145" cy="90" r="28" style="fill:white"/>
+                <circle cx="145" cy="90" r="27" style="fill:white;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1))"/>
+
+                <!-- Right eye white -->
+                <circle cx="315" cy="90" r="28" style="fill:white"/>
+                <circle cx="315" cy="90" r="27" style="fill:white;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1))"/>
+
+                <!-- Left bean eye (iris) -->
+                <g id="eye-group-l">
+                    <ellipse cx="145" cy="90" rx="16" ry="22" style="fill:var(--yeti-eye)" transform="rotate(-18 145 90)"/>
+                    <ellipse cx="145" cy="90" rx="16" ry="22" style="fill:none;stroke:rgba(255,255,255,0.15);stroke-width:1.5" transform="rotate(-18 145 90)"/>
+                    <!-- Main highlight -->
+                    <circle cx="150" cy="82" r="7" fill="white" opacity="0.92"/>
+                    <!-- Secondary highlight -->
+                    <circle cx="142" cy="98" r="3" fill="white" opacity="0.4"/>
+                </g>
+
+                <!-- Right bean eye (iris) mirrored -->
+                <g id="eye-group-r">
+                    <ellipse cx="315" cy="90" rx="16" ry="22" style="fill:var(--yeti-eye)" transform="rotate(18 315 90)"/>
+                    <ellipse cx="315" cy="90" rx="16" ry="22" style="fill:none;stroke:rgba(255,255,255,0.15);stroke-width:1.5" transform="rotate(18 315 90)"/>
+                    <!-- Main highlight -->
+                    <circle cx="310" cy="82" r="7" fill="white" opacity="0.92"/>
+                    <!-- Secondary highlight -->
+                    <circle cx="318" cy="98" r="3" fill="white" opacity="0.4"/>
+                </g>
+
+                <!-- Smile -->
+                <path d="M 190 125 Q 230 155 270 125" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" style="stroke:rgba(100,181,246,0.15);fill:none"/>
+                <path d="M 190 123 Q 230 152 270 123" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" style="stroke:var(--red);fill:none"/>
+            </svg>
+        </div>
+
+        <!-- Content section -->
+        <div class="content">
+            <div class="header">
+                <div class="header-brand">
+                    <span class="brand-accent">e</span><span class="brand-text">ko</span>
+                    <span class="brand-sep"></span>
+                    <span class="brand-sub">Powering your digital companion</span>
+                </div>
+                <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">&#9790;</button>
+            </div>
+
+            <!-- Firmware info -->
+            <div class="card">
+                <div class="card-title"><span class="material-icons icon-inline">info</span> Firmware Info</div>
+                <div class="info-item">
+                    <span class="info-label"><span class="material-icons icon-small">tag</span> Version</span>
+                    <span class="info-value" id="version">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"><span class="material-icons icon-small">storage</span> Size</span>
+                    <span class="info-value" id="firmware-size">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"><span class="material-icons icon-small">schedule</span> Timestamp</span>
+                    <span class="info-value" id="timestamp">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"><span class="material-icons icon-small">verified_user</span> MD5</span>
+                    <span class="info-value mono small" id="firmware-md5">Loading...</span>
+                </div>
+                <button class="btn btn-secondary" id="refresh-btn"><span class="material-icons icon-inline">refresh</span> Refresh</button>
+            </div>
+
+            <!-- Flash -->
+            <div class="card">
+                <div class="card-title"><span class="material-icons icon-inline">flash_on</span> Flash</div>
+                <div class="flash-button-row">
+                    <esp-web-install-button id="install-btn" manifest="manifest.json">
+                        <button class="btn btn-primary" slot="activate"><span class="material-icons icon-inline">usb</span> Connect & Flash</button>
+                        <span slot="unsupported">Your browser does not support Web Serial. Use Chrome or Edge 89+.</span>
+                        <span slot="not-allowed">Serial access is blocked. Allow serial access and reload.</span>
+                    </esp-web-install-button>
+                </div>
+                <div class="hint small">Requires Chrome/Edge 89+. Hold BOOT on the board if prompted.</div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-brand">eko Firmware Flasher</div>
+                <div class="footer-copy">Copyright &copy; 2026 <a href="https://github.com/sohamdalwadi" target="_blank" rel="noopener noreferrer">Soham Dalwadi</a>. All rights reserved.</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
