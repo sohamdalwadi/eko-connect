@@ -169,6 +169,27 @@ body {
   font-size: .85em;
 }
 
+/* Build Select */
+.build-select {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: .9em;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: border-color .2s;
+}
+.build-select:hover {
+  border-color: var(--red);
+}
+.build-select:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 1px var(--red);
+}
+
 /* Settings & Checkboxes */
 .setting {
   display: flex;

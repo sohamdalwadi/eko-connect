@@ -9,6 +9,8 @@ const ui = {
     firmwareSizeEl: document.getElementById('firmware-size'),
     firmwareMd5El: document.getElementById('firmware-md5'),
     refreshBtn: document.getElementById('refresh-btn'),
+    buildSelect: document.getElementById('build-select'),
+    installBtn: document.getElementById('install-btn'),
 };
 
 let releaseData = null;
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadLatestVersion();
     ui.refreshBtn.addEventListener('click', loadLatestVersion);
+    ui.buildSelect.addEventListener('change', loadLatestVersion);
     initEyeTracking();
 });
 
@@ -32,29 +35,48 @@ function toggleTheme() {
 // Firmware info
 async function loadLatestVersion() {
     try {
+        const buildFolder = ui.buildSelect.value;
         ui.refreshBtn.disabled = true;
         ui.versionEl.textContent = 'Loading...';
         ui.timestampEl.textContent = 'Loading...';
         ui.firmwareSizeEl.textContent = 'Loading...';
         ui.firmwareMd5El.textContent = 'Loading...';
 
-        const response = await fetch('latest.json');
-        if (!response.ok) throw new Error(`Failed to fetch latest.json: ${response.status}`);
-        const latestJson = await response.json();
+        // Update manifest path for esp-web-tools
+        ui.installBtn.setAttribute('manifest', `${buildFolder}/manifest.json`);
 
-        releaseData = latestJson;
-        ui.versionEl.textContent = latestJson.version || 'Unknown';
-        ui.timestampEl.textContent = formatDate(latestJson.timestamp) || 'Unknown';
-        if (latestJson.files && latestJson.files['firmware.bin']) {
-            const fw = latestJson.files['firmware.bin'];
-            ui.firmwareSizeEl.textContent = formatBytes(fw.size);
-            ui.firmwareMd5El.textContent = fw.md5.substring(0, 16) + '...';
+        const response = await fetch(`${buildFolder}/latest.json`);
+        if (!response.ok) {
+            // Fallback for local development or if subfolders don't exist yet
+            if (response.status === 404) {
+                const fallbackResponse = await fetch('latest.json');
+                if (fallbackResponse.ok) {
+                    const fallbackData = await fallbackResponse.json();
+                    displayData(fallbackData);
+                    ui.installBtn.setAttribute('manifest', 'manifest.json');
+                    return;
+                }
+            }
+            throw new Error(`Failed to fetch latest.json: ${response.status}`);
         }
+        const latestJson = await response.json();
+        displayData(latestJson);
     } catch (error) {
         console.error('Load version failed:', error);
         ui.versionEl.textContent = '[ERR] Load failed';
     } finally {
         ui.refreshBtn.disabled = false;
+    }
+}
+
+function displayData(latestJson) {
+    releaseData = latestJson;
+    ui.versionEl.textContent = latestJson.version || 'Unknown';
+    ui.timestampEl.textContent = formatDate(latestJson.timestamp) || 'Unknown';
+    if (latestJson.files && latestJson.files['firmware.bin']) {
+        const fw = latestJson.files['firmware.bin'];
+        ui.firmwareSizeEl.textContent = formatBytes(fw.size);
+        ui.firmwareMd5El.textContent = fw.md5.substring(0, 16) + '...';
     }
 }
 
