@@ -9,6 +9,7 @@ const ui = {
     firmwareSizeEl: document.getElementById('firmware-size'),
     firmwareMd5El: document.getElementById('firmware-md5'),
     refreshBtn: document.getElementById('refresh-btn'),
+    productSelect: document.getElementById('product-select'),
     buildSelect: document.getElementById('build-select'),
     installBtn: document.getElementById('install-btn'),
 };
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadLatestVersion();
     ui.refreshBtn.addEventListener('click', loadLatestVersion);
+    ui.productSelect.addEventListener('change', loadLatestVersion);
     ui.buildSelect.addEventListener('change', loadLatestVersion);
     initEyeTracking();
 });
@@ -35,7 +37,9 @@ function toggleTheme() {
 // Firmware info
 async function loadLatestVersion() {
     try {
-        const buildFolder = ui.buildSelect.value;
+        const product = ui.productSelect.value;
+        const buildType = ui.buildSelect.value;
+        const buildFolder = `${product}/${buildType}`;
         ui.refreshBtn.disabled = true;
         ui.versionEl.textContent = 'Loading...';
         ui.timestampEl.textContent = 'Loading...';

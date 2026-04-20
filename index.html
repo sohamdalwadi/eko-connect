@@ -84,10 +84,18 @@
             <div class="card">
                 <div class="card-title"><span class="material-icons icon-inline">build</span> Build Selection</div>
                 <div class="info-item">
+                    <span class="info-label"><span class="material-icons icon-small">devices</span> Product</span>
+                    <select id="product-select" class="build-select">
+                        <option value="eko-buddy">eko Buddy</option>
+                        <option value="eko-drive">eko Drive</option>
+                        <option value="eko-ai">eko AI</option>
+                    </select>
+                </div>
+                <div class="info-item">
                     <span class="info-label"><span class="material-icons icon-small">account_tree</span> Type</span>
                     <select id="build-select" class="build-select">
-                        <option value="eko-buddy/release">Official Release</option>
-                        <option value="eko-buddy/debug">Beta / Debug</option>
+                        <option value="release">Official Release</option>
+                        <option value="debug">Beta / Debug</option>
                     </select>
                 </div>
             </div>
