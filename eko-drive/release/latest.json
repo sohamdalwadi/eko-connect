@@ -1,0 +1,22 @@
+{
+  "version": "0.0.0",
+  "timestamp": "2026-04-20T12:31:50Z",
+  "branch": "v0.0.0",
+  "files": {
+    "firmware.bin": {
+      "url": "firmware.bin",
+      "size": 1448800,
+      "md5": "87f507c701fc67d277838bd10074e9f0"
+    },
+    "bootloader.bin": {
+      "url": "bootloader.bin",
+      "size": 19440,
+      "md5": "b461869304208fd75b402bbde9c24019"
+    },
+    "partitions.bin": {
+      "url": "partitions.bin",
+      "size": 3072,
+      "md5": "49bd86864ceaf01df939a75c832f1382"
+    }
+  }
+}
