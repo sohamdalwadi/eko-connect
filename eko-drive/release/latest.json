@@ -1,12 +1,12 @@
 {
-  "version": "master-20260420-7323c3e",
-  "timestamp": "2026-04-20T13:00:55Z",
+  "version": "master-20260420-6f54133",
+  "timestamp": "2026-04-20T16:33:56Z",
   "branch": "master",
   "files": {
     "firmware.bin": {
       "url": "firmware.bin",
-      "size": 1448800,
-      "md5": "3ca82a3fb32f3ed8f1c1303fb8ceacac"
+      "size": 1450688,
+      "md5": "6212baa0c369088ff339f4c7e6699da4"
     },
     "bootloader.bin": {
       "url": "bootloader.bin",
