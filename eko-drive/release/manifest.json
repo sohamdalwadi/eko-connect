@@ -1,6 +1,6 @@
 {
-  "name": "eko-chronos (v0.0.0)",
-  "version": "0.0.0",
+  "name": "eko-drive (master)",
+  "version": "master-20260420-7323c3e",
   "new_install_prompt_erase": true,
   "builds": [
     {
