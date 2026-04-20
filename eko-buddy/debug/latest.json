@@ -1,0 +1,27 @@
+{
+  "version": "eko-dev-custom-20260420-ecd5688",
+  "timestamp": "2026-04-20T10:25:25Z",
+  "branch": "eko-dev-custom",
+  "files": {
+    "firmware.bin": {
+      "url": "firmware.bin",
+      "size": 1785168,
+      "md5": "bb5a4abcb78bf9989802e9f8c61eb419"
+    },
+    "littlefs.bin": {
+      "url": "littlefs.bin",
+      "size": 2031616,
+      "md5": "8befbca1bb1a3c7f0511397e6c000bd4"
+    },
+    "bootloader.bin": {
+      "url": "bootloader.bin",
+      "size": 19440,
+      "md5": "b461869304208fd75b402bbde9c24019"
+    },
+    "partitions.bin": {
+      "url": "partitions.bin",
+      "size": 3072,
+      "md5": "49bd86864ceaf01df939a75c832f1382"
+    }
+  }
+}
