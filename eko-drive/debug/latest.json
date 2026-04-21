@@ -1,0 +1,22 @@
+{
+  "version": "develop-20260421-4e54cbb",
+  "timestamp": "2026-04-21T07:07:41Z",
+  "branch": "develop",
+  "files": {
+    "firmware.bin": {
+      "url": "firmware.bin",
+      "size": 1517376,
+      "md5": "4734cf69577df3d6f4ec60135f0beff5"
+    },
+    "bootloader.bin": {
+      "url": "bootloader.bin",
+      "size": 19440,
+      "md5": "b461869304208fd75b402bbde9c24019"
+    },
+    "partitions.bin": {
+      "url": "partitions.bin",
+      "size": 3072,
+      "md5": "49bd86864ceaf01df939a75c832f1382"
+    }
+  }
+}
