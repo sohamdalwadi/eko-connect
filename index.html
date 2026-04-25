@@ -3,145 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eko Firmware Flasher</title>
+    <title>eko dev lab | Premium Desk Companions</title>
     <link rel="icon" type="image/svg+xml" href="icon.svg">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
 </head>
-<body>
-    <div class="container">
-        <!-- Face section -->
-        <div class="yeti-face-section" aria-label="Yeti face">
-            <svg class="yeti-face-svg" id="yeti-face" viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
-                    </filter>
-                    <radialGradient id="eyeGradient" cx="40%" cy="40%">
-                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4"/>
-                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
-                    </radialGradient>
-                </defs>
-
-                <!-- Main face body with rounded rectangle -->
-                <rect x="30" y="10" width="400" height="170" rx="45" ry="45" style="fill:var(--yeti-face-bg)" opacity="0.7"/>
-                <rect x="35" y="15" width="390" height="160" rx="40" ry="40" style="fill:var(--yeti-face-bg)"/>
-                
-                <!-- Face highlight for dimension -->
-                <ellipse cx="230" cy="65" rx="150" ry="40" style="fill:white" opacity="0.15"/>
-
-                <!-- Subtle cheeks gradient -->
-                <ellipse cx="95" cy="105" rx="42" ry="28" fill="#ff6b9d" opacity="0.08" filter="url(#softGlow)"/>
-                <ellipse cx="365" cy="105" rx="42" ry="28" fill="#ff6b9d" opacity="0.08" filter="url(#softGlow)"/>
-
-                <!-- Left eye white -->
-                <circle cx="145" cy="90" r="28" style="fill:white"/>
-                <circle cx="145" cy="90" r="27" style="fill:white;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1))"/>
-
-                <!-- Right eye white -->
-                <circle cx="315" cy="90" r="28" style="fill:white"/>
-                <circle cx="315" cy="90" r="27" style="fill:white;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1))"/>
-
-                <!-- Left bean eye (iris) -->
-                <g id="eye-group-l">
-                    <ellipse cx="145" cy="90" rx="16" ry="22" style="fill:var(--yeti-eye)" transform="rotate(-18 145 90)"/>
-                    <ellipse cx="145" cy="90" rx="16" ry="22" style="fill:none;stroke:rgba(255,255,255,0.15);stroke-width:1.5" transform="rotate(-18 145 90)"/>
-                    <!-- Main highlight -->
-                    <circle cx="150" cy="82" r="7" fill="white" opacity="0.92"/>
-                    <!-- Secondary highlight -->
-                    <circle cx="142" cy="98" r="3" fill="white" opacity="0.4"/>
-                </g>
-
-                <!-- Right bean eye (iris) mirrored -->
-                <g id="eye-group-r">
-                    <ellipse cx="315" cy="90" rx="16" ry="22" style="fill:var(--yeti-eye)" transform="rotate(18 315 90)"/>
-                    <ellipse cx="315" cy="90" rx="16" ry="22" style="fill:none;stroke:rgba(255,255,255,0.15);stroke-width:1.5" transform="rotate(18 315 90)"/>
-                    <!-- Main highlight -->
-                    <circle cx="310" cy="82" r="7" fill="white" opacity="0.92"/>
-                    <!-- Secondary highlight -->
-                    <circle cx="318" cy="98" r="3" fill="white" opacity="0.4"/>
-                </g>
-
-                <!-- Smile -->
-                <path d="M 190 125 Q 230 155 270 125" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" style="stroke:rgba(100,181,246,0.15);fill:none"/>
-                <path d="M 190 123 Q 230 152 270 123" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" style="stroke:var(--red);fill:none"/>
-            </svg>
+<body class="lab-theme">
+    <div class="background-overlay"></div>
+    
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-eko">eko</span>
+                <span class="logo-lab">dev lab</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#products">Products</a>
+                <a href="#buddy">Meet Buddy</a>
+                <a href="#flashing">How to Flash</a>
+                <a href="#install">Installer</a>
+                <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+                    <span class="material-icons">dark_mode</span>
+                </button>
+            </nav>
         </div>
+    </header>
 
-        <!-- Content section -->
-        <div class="content">
-            <div class="header">
-                <div class="header-brand">
-                    <span class="brand-accent">e</span><span class="brand-text">ko</span>
-                    <span class="brand-sep"></span>
-                    <span class="brand-sub">Powering your digital companion</span>
-                </div>
-                <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">&#9790;</button>
-            </div>
-
-            <!-- Build Selection -->
-            <div class="card">
-                <div class="card-title"><span class="material-icons icon-inline">build</span> Build Selection</div>
-                <div class="info-item">
-                    <span class="info-label"><span class="material-icons icon-small">devices</span> Product</span>
-                    <select id="product-select" class="build-select">
-                        <option value="eko-buddy">eko Buddy</option>
-                        <option value="eko-drive">eko Drive</option>
-                        <option value="eko-ai">eko AI</option>
-                    </select>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><span class="material-icons icon-small">account_tree</span> Type</span>
-                    <select id="build-select" class="build-select">
-                        <option value="release">Official Release</option>
-                        <option value="debug">Beta / Debug</option>
-                    </select>
+    <main class="main-content">
+        <section class="hero">
+            <div class="hero-text">
+                <h1 class="hero-title">Your desk just got a <span class="gradient-text">personality</span></h1>
+                <p class="hero-subtitle">eko is not just a gadget. It’s that one thing on your desk people notice. It reacts, plays, reminds, and keeps you company while you work.</p>
+                <div class="hero-actions">
+                    <a href="#buddy" class="btn btn-primary-glitter">Pre-order Buddy</a>
+                    <a href="#install" class="btn btn-outline">Firmware Update</a>
                 </div>
             </div>
+            <div class="hero-visual">
+                <div class="lab-frame">
+                    <img src="eko_buddy.jpeg" alt="eko Buddy" class="hero-img">
+                </div>
+            </div>
+        </section>
 
-            <!-- Firmware info -->
-            <div class="card">
-                <div class="card-title"><span class="material-icons icon-inline">info</span> Firmware Info</div>
-                <div class="info-item">
-                    <span class="info-label"><span class="material-icons icon-small">tag</span> Version</span>
-                    <span class="info-value" id="version">Loading...</span>
+        <section id="products" class="products-section">
+            <h2 class="section-title">The Ecosystem</h2>
+            <div class="product-grid">
+                <div class="product-card" data-product="eko-buddy">
+                    <div class="product-icon">
+                        <svg class="eye-blink" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="12" width="8" height="8" fill="currentColor"/>
+                            <rect x="20" y="12" width="8" height="8" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>eko Buddy</h3>
+                    <p>Expressive desktop companion with a brain, a mood, and a purpose.</p>
+                    <button class="btn-text">Coming to Pre-order →</button>
                 </div>
-                <div class="info-item">
-                    <span class="info-label"><span class="material-icons icon-small">storage</span> Size</span>
-                    <span class="info-value" id="firmware-size">Loading...</span>
+                <div class="product-card" data-product="eko-drive">
+                    <div class="product-icon"><span class="material-icons">explore</span></div>
+                    <h3>eko Drive</h3>
+                    <p>Your companion for turn-by-turn navigation and road intelligence.</p>
+                    <button class="btn-text">Coming to Pre-order →</button>
                 </div>
-                <div class="info-item">
-                    <span class="info-label"><span class="material-icons icon-small">schedule</span> Timestamp</span>
-                    <span class="info-value" id="timestamp">Loading...</span>
+                <div class="product-card" data-product="eko-ai">
+                    <div class="product-icon"><span class="material-icons">settings_voice</span></div>
+                    <h3>eko AI</h3>
+                    <p>An AI voice companion that talks to you and assists your daily flow.</p>
+                    <button class="btn-text">Coming to Pre-order →</button>
                 </div>
-                <div class="info-item">
-                    <span class="info-label"><span class="material-icons icon-small">verified_user</span> MD5</span>
-                    <span class="info-value mono small" id="firmware-md5">Loading...</span>
-                </div>
-                <button class="btn btn-secondary" id="refresh-btn"><span class="material-icons icon-inline">refresh</span> Refresh</button>
+            </div>
+        </section>
+
+        <!-- eko Buddy Deep Dive -->
+        <section id="buddy" class="showcase-section">
+            <div class="showcase-header">
+                <span class="badge">Featured Product</span>
+                <h2>eko Buddy</h2>
+                <p>Most desks are functional. Few are alive. eko turns your workspace into something that feels <em>yours</em>.</p>
             </div>
 
-            <!-- Flash -->
-            <div class="card">
-                <div class="card-title"><span class="material-icons icon-inline">flash_on</span> Flash</div>
-                <div class="flash-button-row">
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="material-icons">face</span>
+                    <h4>Robotic Expressions</h4>
+                    <p>Reacts with animated expressions—happy, sleepy, alert—based on time and interaction. Subtle and non-distracting.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="material-icons">schedule</span>
+                    <h4>Clock & Date</h4>
+                    <p>Clean, minimal 12h/24h formats designed to blend into your setup perfectly.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="material-icons">videogame_asset</span>
+                    <h4>Built-in Games</h4>
+                    <p>T-Rex Runner, Flappy Bird, and Car Avoidance for those much-needed brain breaks.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="material-icons">cloud_queue</span>
+                    <h4>Weather</h4>
+                    <p><span class="coming-soon">Coming Soon</span> Temperature, Humidity, and AQI info at a quick glance.</p>
+                </div>
+            </div>
+
+            <div class="ui-flow-box">
+                <h4>Intuitive UI Flow</h4>
+                <div class="flow-steps">
+                    <div class="step"><strong>Tap</strong> <span>Scroll</span></div>
+                    <div class="step"><strong>Long Press</strong> <span>Enter</span></div>
+                    <div class="step"><strong>Double-Tap</strong> <span>Exit</span></div>
+                    <div class="step"><strong>Idle 10s</strong> <span>Auto Exit</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="info-grid">
+                <div class="info-text">
+                    <h2>Coming Soon to Buddy</h2>
+                    <ul class="future-list">
+                        <li><strong>Pomodoro Mode:</strong> Work with rhythm and visual feedback.</li>
+                        <li><strong>Interactive Expressions:</strong> Tap-based reactions and context-aware moods.</li>
+                        <li><strong>Smart Reminders:</strong> Water, food, and medication alerts.</li>
+                        <li><strong>Live Market Prices:</strong> Track Gold, Silver, and Bitcoin without distraction.</li>
+                    </ul>
+                </div>
+                <div class="info-visual">
+                    <div class="glass-box">
+                        <span class="material-icons info-icon-large">hourglass_empty</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="flashing" class="info-section alternate">
+            <div class="info-grid">
+                <div class="info-visual">
+                    <div class="glass-box">
+                        <span class="material-icons info-icon-large">bolt</span>
+                    </div>
+                </div>
+                <div class="info-text">
+                    <h2>What is Flashing?</h2>
+                    <p>Flashing is the process of writing software (firmware) directly to the memory of your eko device. It's like installing an OS on your phone or computer, but specialized for microcontrollers.</p>
+                    <p>With <strong>eko dev lab</strong>, you don't need any complex tools. Just connect your device via USB and click flash. We use Web Serial to handle the communication securely right in your browser.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="install" class="flasher-section">
+            <div class="flasher-container">
+                <div class="flasher-header">
+                    <h2>Firmware Installer</h2>
+                    <p>Select your product and build to begin.</p>
+                </div>
+
+                <div class="flasher-grid">
+                    <!-- Build Selection -->
+                    <div class="config-card">
+                        <div class="card-header">
+                            <span class="material-icons">settings</span> Configuration
+                        </div>
+                        <div class="control-group">
+                            <label>Product</label>
+                            <select id="product-select">
+                                <option value="eko-buddy">eko Buddy</option>
+                                <option value="eko-drive">eko Drive</option>
+                                <option value="eko-ai">eko AI</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Build Type</label>
+                            <select id="build-select">
+                                <option value="release">Official Release</option>
+                                <option value="debug">Beta / Debug</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-secondary" id="refresh-btn">
+                            <span class="material-icons">refresh</span> Check for Updates
+                        </button>
+                    </div>
+
+                    <!-- Firmware info -->
+                    <div class="config-card">
+                        <div class="card-header">
+                            <span class="material-icons">info_outline</span> Firmware Details
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="label">Version</span>
+                                <span class="value" id="version">...</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">Size</span>
+                                <span class="value" id="firmware-size">...</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">Timestamp</span>
+                                <span class="value" id="timestamp">...</span>
+                            </div>
+                            <div class="stat-item full-width">
+                                <span class="label">MD5 Checksum</span>
+                                <span class="value mono" id="firmware-md5">...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flash-action-area">
                     <esp-web-install-button id="install-btn" manifest="manifest.json">
-                        <button class="btn btn-primary" slot="activate"><span class="material-icons icon-inline">usb</span> Connect & Flash</button>
-                        <span slot="unsupported">Your browser does not support Web Serial. Use Chrome or Edge 89+.</span>
-                        <span slot="not-allowed">Serial access is blocked. Allow serial access and reload.</span>
+                        <button class="btn btn-flash" slot="activate">
+                            <span class="material-icons">usb</span> Connect & Flash Now
+                        </button>
+                        <span slot="unsupported" class="error-msg">Your browser does not support Web Serial. Use Chrome or Edge.</span>
+                        <span slot="not-allowed" class="error-msg">Serial access is blocked. Please allow and reload.</span>
                     </esp-web-install-button>
+                    <p class="flash-hint">Requires Chrome or Edge 89+. Connect your device via USB before clicking.</p>
                 </div>
-                <div class="hint small">Requires Chrome/Edge 89+. Hold BOOT on the board if prompted.</div>
             </div>
+        </section>
+    </main>
 
-            <div class="footer">
-                <div class="footer-brand">eko Firmware Flasher</div>
-                <div class="footer-copy">Copyright &copy; 2026 <a href="https://github.com/sohamdalwadi" target="_blank" rel="noopener noreferrer">Soham Dalwadi</a>. All rights reserved.</div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">eko dev lab</div>
+            <div class="footer-links">
+                <a href="https://github.com/sohamdalwadi" target="_blank">GitHub</a>
+                <a href="#">Support</a>
+                <a href="#">Privacy</a>
             </div>
+            <p class="copyright">&copy; 2026 Soham Dalwadi. Built for the eko ecosystem.</p>
         </div>
-    </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
+

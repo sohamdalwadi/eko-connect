@@ -12,26 +12,44 @@ const ui = {
     productSelect: document.getElementById('product-select'),
     buildSelect: document.getElementById('build-select'),
     installBtn: document.getElementById('install-btn'),
+    productCards: document.querySelectorAll('.product-card')
 };
 
 let releaseData = null;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    const isDark = !localStorage.getItem('eko-light-mode');
-    if (!isDark) document.body.classList.add('light-mode');
+    // Theme initialization
+    const isLight = localStorage.getItem('eko-light-mode') === 'true';
+    if (isLight) document.body.classList.add('light-mode');
     ui.themeBtn.addEventListener('click', toggleTheme);
 
+    // Data loading
     loadLatestVersion();
     ui.refreshBtn.addEventListener('click', loadLatestVersion);
     ui.productSelect.addEventListener('change', loadLatestVersion);
     ui.buildSelect.addEventListener('change', loadLatestVersion);
-    initEyeTracking();
+
+    // Product card interaction
+    ui.productCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const product = card.getAttribute('data-product');
+            ui.productSelect.value = product;
+            loadLatestVersion();
+            document.getElementById('install').scrollIntoView({ behavior: 'smooth' });
+        });
+    });
 });
 
 function toggleTheme() {
-    document.body.classList.toggle('light-mode');
-    localStorage.setItem('eko-light-mode', document.body.classList.contains('light-mode') ? 'true' : '');
+    const isLight = document.body.classList.toggle('light-mode');
+    localStorage.setItem('eko-light-mode', isLight);
+    
+    // Update icon
+    const icon = ui.themeBtn.querySelector('.material-icons');
+    if (icon) {
+        icon.textContent = isLight ? 'light_mode' : 'dark_mode';
+    }
 }
 
 // Firmware info
@@ -40,18 +58,19 @@ async function loadLatestVersion() {
         const product = ui.productSelect.value;
         const buildType = ui.buildSelect.value;
         const buildFolder = `${product}/${buildType}`;
+        
         ui.refreshBtn.disabled = true;
-        ui.versionEl.textContent = 'Loading...';
-        ui.timestampEl.textContent = 'Loading...';
-        ui.firmwareSizeEl.textContent = 'Loading...';
-        ui.firmwareMd5El.textContent = 'Loading...';
+        ui.versionEl.textContent = '...';
+        ui.timestampEl.textContent = '...';
+        ui.firmwareSizeEl.textContent = '...';
+        ui.firmwareMd5El.textContent = '...';
 
         // Update manifest path for esp-web-tools
         ui.installBtn.setAttribute('manifest', `${buildFolder}/manifest.json`);
 
         const response = await fetch(`${buildFolder}/latest.json`);
         if (!response.ok) {
-            // Fallback for local development or if subfolders don't exist yet
+            // Fallback for local development
             if (response.status === 404) {
                 const fallbackResponse = await fetch('latest.json');
                 if (fallbackResponse.ok) {
@@ -67,7 +86,7 @@ async function loadLatestVersion() {
         displayData(latestJson);
     } catch (error) {
         console.error('Load version failed:', error);
-        ui.versionEl.textContent = '[ERR] Load failed';
+        ui.versionEl.textContent = '[ERR]';
     } finally {
         ui.refreshBtn.disabled = false;
     }
@@ -97,53 +116,6 @@ function formatDate(isoString) {
     if (!isoString) return null;
     const date = new Date(isoString);
     if (Number.isNaN(date.getTime())) return null;
-    const y = date.getFullYear();
-    const m = String(date.getMonth() + 1).padStart(2, '0');
-    const d = String(date.getDate()).padStart(2, '0');
-    const h = String(date.getHours()).padStart(2, '0');
-    const min = String(date.getMinutes()).padStart(2, '0');
-    const s = String(date.getSeconds()).padStart(2, '0');
-    return `${y}-${m}-${d} ${h}:${min}:${s}`;
+    return date.toLocaleString();
 }
 
-// Dasai Mochi eye tracking
-function initEyeTracking() {
-    const faceSvg = document.getElementById('yeti-face');
-    if (!faceSvg) return;
-    const eyeL = document.getElementById('eye-group-l');
-    const eyeR = document.getElementById('eye-group-r');
-    if (!eyeL || !eyeR) return;
-
-    // ViewBox dimensions & eye centres (SVG units)
-    const VW = 460, VH = 200;
-    const eyes = [
-        { el: eyeL, cx: 145, cy: 90 },
-        { el: eyeR, cx: 315, cy: 90 },
-    ];
-    // sclera r=32, iris r=17 → max travel = 32 - 17 - 3 = 12 SVG units
-    const MAX = 12;
-
-    let raf = null;
-    function move(clientX, clientY) {
-        const r = faceSvg.getBoundingClientRect();
-        if (r.width === 0) return;
-        const sx = VW / r.width, sy = VH / r.height;
-        eyes.forEach(({ el, cx, cy }) => {
-            const dx = (clientX - r.left) * sx - cx;
-            const dy = (clientY - r.top)  * sy - cy;
-            const d  = Math.sqrt(dx * dx + dy * dy);
-            const s  = d > MAX ? MAX / d : 1;
-            el.setAttribute('transform', `translate(${(dx*s).toFixed(2)},${(dy*s).toFixed(2)})`);
-        });
-    }
-
-    document.addEventListener('mousemove', (e) => {
-        if (raf) cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => move(e.clientX, e.clientY));
-    });
-    document.addEventListener('touchmove', (e) => {
-        const t = e.touches[0];
-        if (raf) cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => move(t.clientX, t.clientY));
-    }, { passive: true });
-}
