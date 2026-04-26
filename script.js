@@ -1,4 +1,4 @@
-// eko Firmware Flasher
+// eko dev lab — Script
 // Flashing handled by esp-web-tools <esp-web-install-button> via manifest.json
 
 // UI elements
@@ -12,10 +12,13 @@ const ui = {
     productSelect: document.getElementById('product-select'),
     buildSelect: document.getElementById('build-select'),
     installBtn: document.getElementById('install-btn'),
-    productCards: document.querySelectorAll('.product-card')
+    productCards: document.querySelectorAll('.product-card'),
+    preorderForm: document.getElementById('preorder-form'),
+    preorderSuccess: document.getElementById('preorder-success')
 };
 
 let releaseData = null;
+let formSubmitted = false;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -30,16 +33,45 @@ document.addEventListener('DOMContentLoaded', () => {
     ui.productSelect.addEventListener('change', loadLatestVersion);
     ui.buildSelect.addEventListener('change', loadLatestVersion);
 
-    // Product card interaction
+    // Product card interaction — scroll to pre-order instead of firmware
     ui.productCards.forEach(card => {
         card.addEventListener('click', () => {
             const product = card.getAttribute('data-product');
+            // Update firmware dropdown
             ui.productSelect.value = product;
             loadLatestVersion();
-            document.getElementById('install').scrollIntoView({ behavior: 'smooth' });
+            // Update pre-order dropdown if it exists
+            const preorderProduct = document.getElementById('preorder-product');
+            if (preorderProduct) {
+                const mapping = {
+                    'eko-buddy': 'eko Buddy',
+                    'eko-drive': 'eko Drive',
+                    'eko-ai': 'eko AI'
+                };
+                preorderProduct.value = mapping[product] || '';
+            }
         });
     });
+
+    // Pre-order form submission
+    if (ui.preorderForm) {
+        ui.preorderForm.addEventListener('submit', () => {
+            formSubmitted = true;
+        });
+    }
 });
+
+// Called when the hidden iframe loads (after form submission)
+function onFormSubmit() {
+    if (formSubmitted && ui.preorderForm && ui.preorderSuccess) {
+        ui.preorderForm.style.display = 'none';
+        ui.preorderSuccess.style.display = 'block';
+        formSubmitted = false;
+    }
+}
+
+// Make it global so the iframe onload can call it
+window.onFormSubmit = onFormSubmit;
 
 function toggleTheme() {
     const isLight = document.body.classList.toggle('light-mode');
@@ -118,4 +150,3 @@ function formatDate(isoString) {
     if (Number.isNaN(date.getTime())) return null;
     return date.toLocaleString();
 }
-

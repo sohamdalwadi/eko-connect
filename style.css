@@ -1,5 +1,5 @@
 /* 
-   eko Iceberg Theme
+   eko Pulse Lab Theme
    Premium, Modern, and Dynamic
 */
 
@@ -767,6 +767,325 @@ select:hover {
   margin-right: 0.5rem;
 }
 
+/* Hero Tag */
+.hero-tag {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--eko-red);
+  background: rgba(255, 61, 65, 0.1);
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.hero-social-proof {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.hero-social-proof .material-icons {
+  color: var(--eko-red);
+  font-size: 1.2rem;
+}
+
+.hero-social-proof strong {
+  color: var(--lab-frost);
+}
+
+/* Section Subtitle */
+.section-subtitle {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 1.15rem;
+  max-width: 600px;
+  margin: -2.5rem auto 4rem;
+}
+
+/* Product Tag */
+.product-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--eko-red);
+  margin-bottom: 0.75rem;
+}
+
+/* Why Section */
+.why-section {
+  max-width: 1200px;
+  margin: 8rem auto;
+  padding: 0 2rem;
+}
+
+.why-container {
+  text-align: center;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.why-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 2.5rem 2rem;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.why-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--eko-red);
+  box-shadow: 0 10px 40px rgba(255, 61, 65, 0.1);
+}
+
+.why-emoji {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+.why-card h4 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  font-family: 'Outfit', sans-serif;
+}
+
+.why-card p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* UI Flow Description */
+.ui-flow-desc {
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+/* Pre-order Section */
+.preorder-section {
+  background: var(--lab-dark);
+  padding: 8rem 2rem;
+  margin-top: 4rem;
+}
+
+.preorder-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.preorder-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.preorder-header h2 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+}
+
+.preorder-header p {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.preorder-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--lab-deep);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  transition: var(--transition);
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--eko-red);
+  box-shadow: 0 0 0 3px rgba(255, 61, 65, 0.15);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #555;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 1.1rem;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.form-disclaimer {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* Pre-order Success */
+.preorder-success {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.success-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.preorder-success h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.preorder-success p {
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Instagram Section */
+.ig-section {
+  max-width: 1200px;
+  margin: 8rem auto;
+  padding: 0 2rem;
+}
+
+.ig-container {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 5rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ig-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 50%, rgba(255, 61, 65, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.ig-text {
+  position: relative;
+  z-index: 1;
+}
+
+.ig-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.ig-text p {
+  color: var(--text-dim);
+  font-size: 1.15rem;
+  max-width: 550px;
+  margin: 0 auto 2rem;
+}
+
+.ig-btn {
+  display: inline-flex;
+  gap: 0.75rem;
+}
+
+/* Nav Instagram Link */
+.nav-ig {
+  display: flex;
+  align-items: center;
+  color: var(--text-dim) !important;
+  transition: var(--transition);
+}
+
+.nav-ig:hover {
+  color: var(--eko-red) !important;
+}
+
+.nav-ig svg {
+  transition: var(--transition);
+}
+
+/* Footer IG handle */
+.footer-ig-handle {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.footer-ig-handle a {
+  color: var(--eko-red);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.footer-ig-handle a:hover {
+  color: var(--lab-frost);
+}
+
 /* Responsive */
 @media (max-width: 968px) {
   .hero {
@@ -783,6 +1102,10 @@ select:hover {
   .hero-actions {
     justify-content: center;
   }
+
+  .hero-social-proof {
+    justify-content: center;
+  }
   
   .product-grid {
     grid-template-columns: 1fr;
@@ -796,6 +1119,18 @@ select:hover {
   .flasher-grid {
     grid-template-columns: 1fr;
   }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+
+  .ig-container {
+    padding: 3rem 2rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -804,7 +1139,18 @@ select:hover {
   }
   
   .nav-links {
-    display: none; /* Mobile menu needed but keeping it simple for now */
+    display: none;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .preorder-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .ig-text h2 {
+    font-size: 1.8rem;
   }
 }
- }
