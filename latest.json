@@ -1,6 +1,6 @@
 ﻿{
-    "releaseNotes":  "Bug fix after Official release",
-    "versionCode":  2,
-    "versionName":  "0.0.2",
+    "releaseNotes":  "We\u0027re excited to bring you a new update packed with features and improvements!\n\n*   **In-App Updates:** Get the latest features and bug fixes directly within the app with our new Over-The-Air (OTA) update system.\n*   **Enhanced User Interface:** Enjoy a refreshed footer design, updated default theme, and improved typography for a cleaner look.\n*   **Faster Launch:** We\u0027ve streamlined the app startup by removing the custom splash screen, making your experience even quicker.\n*   **Under-the-Hood Enhancements:** Improved internal processes for versioning and release management ensure more consistent and timely updates.",
+    "versionCode":  3,
+    "versionName":  "0.1.0-cde23b5",
     "apkUrl":  "https://raw.githubusercontent.com/sohamdalwadi/eko-flasher/android-spot/app-release.apk"
 }
