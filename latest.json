@@ -1,6 +1,6 @@
 ﻿{
-    "releaseNotes":  "*   **User Interface Enhancements:**\n    *   Unified preferred seat row coloring with native seat states for a more consistent look.\n    *   Added a password visibility toggle in the User Management screen.\n    *   Dashboard now displays premium syncing and authentication/connection status.\n*   **Under-the-Hood Improvements:**\n    *   Integrated Detekt for static code analysis and linting, improving code quality.\n    *   Introduced automated Detekt suppression tools and project architecture guidelines.\n    *   Applied Detekt auto-correct fixes.",
-    "versionCode":  4,
-    "versionName":  "0.0.1-030dee6",
+    "releaseNotes":  "This release includes several improvements and fixes:\n*   **OTA Updates**: Addressed issues with Over-the-Air (OTA) updates by preventing duplicate concurrent downloads and ensuring accurate semantic version parsing during publishing.\n*   **Security Maintenance**: Performed internal maintenance to suppress deprecation warnings in SecurePrefs for a cleaner codebase.",
+    "versionCode":  5,
+    "versionName":  "0.0.2-0c6cd05",
     "apkUrl":  "https://raw.githubusercontent.com/sohamdalwadi/eko-flasher/android-spot/app-release.apk"
 }
