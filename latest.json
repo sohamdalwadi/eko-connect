@@ -1,6 +1,6 @@
 ﻿{
-    "releaseNotes":  "We\u0027re excited to bring you a new update packed with features and improvements!\n\n*   **In-App Updates:** Get the latest features and bug fixes directly within the app with our new Over-The-Air (OTA) update system.\n*   **Enhanced User Interface:** Enjoy a refreshed footer design, updated default theme, and improved typography for a cleaner look.\n*   **Faster Launch:** We\u0027ve streamlined the app startup by removing the custom splash screen, making your experience even quicker.\n*   **Under-the-Hood Enhancements:** Improved internal processes for versioning and release management ensure more consistent and timely updates.",
-    "versionCode":  3,
-    "versionName":  "0.1.0-cde23b5",
+    "releaseNotes":  "*   **User Interface Enhancements:**\n    *   Unified preferred seat row coloring with native seat states for a more consistent look.\n    *   Added a password visibility toggle in the User Management screen.\n    *   Dashboard now displays premium syncing and authentication/connection status.\n*   **Under-the-Hood Improvements:**\n    *   Integrated Detekt for static code analysis and linting, improving code quality.\n    *   Introduced automated Detekt suppression tools and project architecture guidelines.\n    *   Applied Detekt auto-correct fixes.",
+    "versionCode":  4,
+    "versionName":  "0.0.1-030dee6",
     "apkUrl":  "https://raw.githubusercontent.com/sohamdalwadi/eko-flasher/android-spot/app-release.apk"
 }
