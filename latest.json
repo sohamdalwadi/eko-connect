@@ -1,6 +1,6 @@
 ﻿{
-    "releaseNotes":  "This release includes several improvements and fixes:\n*   **OTA Updates**: Addressed issues with Over-the-Air (OTA) updates by preventing duplicate concurrent downloads and ensuring accurate semantic version parsing during publishing.\n*   **Security Maintenance**: Performed internal maintenance to suppress deprecation warnings in SecurePrefs for a cleaner codebase.",
-    "versionCode":  5,
-    "versionName":  "0.0.2-0c6cd05",
+    "releaseNotes":  "We\u0027re excited to bring you a significant update packed with new features, stability improvements, and enhanced diagnostics!\n\n*   **Enhanced User \u0026 Subscription Management:** We\u0027ve completely overhauled the user and subscription systems, including migration to Google Sheets, a new Admin panel, simplified user verification, and more robust offline access controls. User interface access is now securely restricted to logged-in users.\n*   **Improved Automation \u0026 Notifications:** Stay informed with a new Telegram notification system for automated booking runs and refined visual overlays.\n*   **Advanced Diagnostics \u0026 Debugging:** For our power users and developers, we\u0027ve introduced a comprehensive suite of diagnostic tools. This includes a dedicated System Alarms tab, nightly trigger checks, an execution auditor, and a new calendar-driven debug logs screen. Critical issues causing data fetching problems and dashboard loading failures have been resolved.\n*   **Performance \u0026 Stability:** Enjoy a smoother experience with optimized API calls, robust date parsing for plan selection, and various bug fixes to improve overall app stability.",
+    "versionCode":  6,
+    "versionName":  "0.1.0-7d1a02e",
     "apkUrl":  "https://raw.githubusercontent.com/sohamdalwadi/eko-flasher/android-spot/app-release.apk"
 }
