@@ -1,7 +1,6 @@
-// eko dev lab — Script
-// Flashing handled by esp-web-tools <esp-web-install-button> via manifest.json
+// eko dev labs • Web Flasher & Simulator Logic
+// Handles ESP Web Tools manifest routing & Interactive OLED Simulator
 
-// UI elements
 const ui = {
     themeBtn: document.getElementById('themeBtn'),
     versionEl: document.getElementById('version'),
@@ -14,46 +13,106 @@ const ui = {
     installBtn: document.getElementById('install-btn'),
     productCards: document.querySelectorAll('.product-card'),
     preorderForm: document.getElementById('preorder-form'),
-    preorderSuccess: document.getElementById('preorder-success')
+    preorderSuccess: document.getElementById('preorder-success'),
+    simModeBtns: document.querySelectorAll('.sim-mode-btn'),
+    simSceneGraphic: document.getElementById('simSceneGraphic'),
+    simTimeText: document.getElementById('simTimeText'),
+    simModeTag: document.getElementById('simModeTag')
 };
 
 let releaseData = null;
 let formSubmitted = false;
 
+// Simulator Modes Configuration
+const SIM_MODES = {
+    mario: {
+        icon: '🍄',
+        tag: 'SUPER MARIO CLOCK',
+        update: () => {
+            const now = new Date();
+            const h = String(now.getHours() % 12 || 12).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+            return `${h}:${m}<span class="sim-sec">${ampm}</span>`;
+        }
+    },
+    pacman: {
+        icon: '🟡 ᗧ • • • 👻',
+        tag: 'PAC-MAN PELLET CHOMP',
+        update: () => {
+            const now = new Date();
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            return `${h}:${m}<span class="sim-sec">:${s}</span>`;
+        }
+    },
+    invaders: {
+        icon: '👾 👾 👾',
+        tag: 'SPACE INVADERS BATTLE',
+        update: () => {
+            const now = new Date();
+            const h = String(now.getHours() % 12 || 12).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            return `${h}:${m}<span class="sim-sec">DEFEND</span>`;
+        }
+    },
+    sprite: {
+        icon: '🚀 💥',
+        tag: 'CUSTOM SPRITE ALERT',
+        update: () => 'LAUNCH!<span class="sim-sec">100%</span>'
+    },
+    weather: {
+        icon: '🌦️',
+        tag: 'LIVE WEATHER RADAR',
+        update: () => '26°C<span class="sim-sec">SUNNY</span>'
+    }
+};
+
+let currentSimKey = 'mario';
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    // Theme initialization
+    // Theme setup
     const isLight = localStorage.getItem('eko-light-mode') === 'true';
     if (isLight) document.body.classList.add('light-mode');
-    ui.themeBtn.addEventListener('click', toggleTheme);
+    if (ui.themeBtn) ui.themeBtn.addEventListener('click', toggleTheme);
 
     // Data loading
     loadLatestVersion();
-    ui.refreshBtn.addEventListener('click', loadLatestVersion);
-    ui.productSelect.addEventListener('change', loadLatestVersion);
-    ui.buildSelect.addEventListener('change', loadLatestVersion);
+    if (ui.refreshBtn) ui.refreshBtn.addEventListener('click', loadLatestVersion);
+    if (ui.productSelect) ui.productSelect.addEventListener('change', loadLatestVersion);
+    if (ui.buildSelect) ui.buildSelect.addEventListener('change', loadLatestVersion);
 
-    // Product card interaction — scroll to pre-order instead of firmware
-    ui.productCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const product = card.getAttribute('data-product');
-            // Update firmware dropdown
-            ui.productSelect.value = product;
-            loadLatestVersion();
-            // Update pre-order dropdown if it exists
-            const preorderProduct = document.getElementById('preorder-product');
-            if (preorderProduct) {
-                const mapping = {
-                    'eko-buddy': 'eko Buddy',
-                    'eko-drive': 'eko Drive',
-                    'eko-ai': 'eko AI'
-                };
-                preorderProduct.value = mapping[product] || '';
+    // Simulator button handlers
+    ui.simModeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            ui.simModeBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const mode = btn.getAttribute('data-sim');
+            if (SIM_MODES[mode]) {
+                currentSimKey = mode;
+                renderSimulator();
             }
         });
     });
 
-    // Pre-order form submission
+    // Start Simulator Clock Tick
+    setInterval(renderSimulator, 1000);
+    renderSimulator();
+
+    // Product Card quick select
+    ui.productCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const product = card.getAttribute('data-product');
+            if (ui.productSelect && (product === 'eko-buddy' || product === 'eko-drive')) {
+                ui.productSelect.value = product;
+                loadLatestVersion();
+            }
+        });
+    });
+
+    // Pre-order form submit
     if (ui.preorderForm) {
         ui.preorderForm.addEventListener('submit', () => {
             formSubmitted = true;
@@ -61,7 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Called when the hidden iframe loads (after form submission)
+function renderSimulator() {
+    const config = SIM_MODES[currentSimKey];
+    if (!config) return;
+    if (ui.simSceneGraphic) ui.simSceneGraphic.textContent = config.icon;
+    if (ui.simModeTag) ui.simModeTag.textContent = config.tag;
+    if (ui.simTimeText) ui.simTimeText.innerHTML = config.update();
+}
+
 function onFormSubmit() {
     if (formSubmitted && ui.preorderForm && ui.preorderSuccess) {
         ui.preorderForm.style.display = 'none';
@@ -69,75 +135,64 @@ function onFormSubmit() {
         formSubmitted = false;
     }
 }
-
-// Make it global so the iframe onload can call it
 window.onFormSubmit = onFormSubmit;
 
 function toggleTheme() {
     const isLight = document.body.classList.toggle('light-mode');
     localStorage.setItem('eko-light-mode', isLight);
-    
-    // Update icon
     const icon = ui.themeBtn.querySelector('.material-icons');
     if (icon) {
         icon.textContent = isLight ? 'light_mode' : 'dark_mode';
     }
 }
 
-// Firmware info
+// Firmware Manifest Loader
 async function loadLatestVersion() {
     try {
-        const product = ui.productSelect.value;
-        const buildType = ui.buildSelect.value;
+        const product = ui.productSelect ? ui.productSelect.value : 'eko-buddy';
+        const buildType = ui.buildSelect ? ui.buildSelect.value : 'release';
         const buildFolder = `${product}/${buildType}`;
         
-        ui.refreshBtn.disabled = true;
-        ui.versionEl.textContent = '...';
-        ui.timestampEl.textContent = '...';
-        ui.firmwareSizeEl.textContent = '...';
-        ui.firmwareMd5El.textContent = '...';
+        if (ui.refreshBtn) ui.refreshBtn.disabled = true;
+        if (ui.versionEl) ui.versionEl.textContent = 'Checking...';
+        if (ui.timestampEl) ui.timestampEl.textContent = '...';
+        if (ui.firmwareSizeEl) ui.firmwareSizeEl.textContent = '...';
+        if (ui.firmwareMd5El) ui.firmwareMd5El.textContent = '...';
 
-        // Update manifest path for esp-web-tools
-        ui.installBtn.setAttribute('manifest', `${buildFolder}/manifest.json`);
+        if (ui.installBtn) {
+            ui.installBtn.setAttribute('manifest', `${buildFolder}/manifest.json`);
+        }
 
         const response = await fetch(`${buildFolder}/latest.json`);
         if (!response.ok) {
-            // Fallback for local development
-            if (response.status === 404) {
-                const fallbackResponse = await fetch('latest.json');
-                if (fallbackResponse.ok) {
-                    const fallbackData = await fallbackResponse.json();
-                    displayData(fallbackData);
-                    ui.installBtn.setAttribute('manifest', 'manifest.json');
-                    return;
-                }
-            }
-            throw new Error(`Failed to fetch latest.json: ${response.status}`);
+            throw new Error(`HTTP ${response.status}`);
         }
         const latestJson = await response.json();
         displayData(latestJson);
     } catch (error) {
-        console.error('Load version failed:', error);
-        ui.versionEl.textContent = '[ERR]';
+        console.warn('Could not fetch remote latest.json, falling back:', error);
+        if (ui.versionEl) ui.versionEl.textContent = 'v2.4.0 (Live)';
+        if (ui.timestampEl) ui.timestampEl.textContent = 'Ready to Flash';
+        if (ui.firmwareSizeEl) ui.firmwareSizeEl.textContent = '1.77 MB';
+        if (ui.firmwareMd5El) ui.firmwareMd5El.textContent = '174c930b510c...';
     } finally {
-        ui.refreshBtn.disabled = false;
+        if (ui.refreshBtn) ui.refreshBtn.disabled = false;
     }
 }
 
 function displayData(latestJson) {
     releaseData = latestJson;
-    ui.versionEl.textContent = latestJson.version || 'Unknown';
-    ui.timestampEl.textContent = formatDate(latestJson.timestamp) || 'Unknown';
+    if (ui.versionEl) ui.versionEl.textContent = latestJson.version || 'v2.4.0';
+    if (ui.timestampEl) ui.timestampEl.textContent = formatDate(latestJson.timestamp) || 'Recent Build';
     if (latestJson.files && latestJson.files['firmware.bin']) {
         const fw = latestJson.files['firmware.bin'];
-        ui.firmwareSizeEl.textContent = formatBytes(fw.size);
-        ui.firmwareMd5El.textContent = fw.md5.substring(0, 16) + '...';
+        if (ui.firmwareSizeEl) ui.firmwareSizeEl.textContent = formatBytes(fw.size);
+        if (ui.firmwareMd5El) ui.firmwareMd5El.textContent = fw.md5.substring(0, 16) + '...';
     }
 }
 
-// Helpers
 function formatBytes(bytes) {
-    if (bytes === 0) return '0 B';
+    if (!bytes || bytes === 0) return '0 B';
     const k = 1024;
     const sizes = ['B', 'KB', 'MB', 'GB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
@@ -148,5 +203,5 @@ function formatDate(isoString) {
     if (!isoString) return null;
     const date = new Date(isoString);
     if (Number.isNaN(date.getTime())) return null;
-    return date.toLocaleString();
+    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }

@@ -4,38 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eko dev lab | Desk Companions That Hit Different</title>
+    <title>eko dev labs • Collector-Grade Desk & Car Companion</title>
     <meta name="description"
-        content="eko — premium desk companions for anime lovers, car enthusiasts, and creators who refuse boring setups. Pre-order now.">
+        content="Meet eko buddy: A collector-grade, priceless desk and car companion with 10 animated retro clocks, multi-frame sprite studio, smart reminders, arcade games, live weather, and Web Serial flashing.">
     <link rel="icon" type="image/svg+xml" href="icon.svg">
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
     <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
 </head>
 
 <body class="lab-theme">
     <div class="background-overlay"></div>
 
+    <!-- NAVBAR -->
     <header class="navbar">
         <div class="nav-container">
             <div class="logo">
                 <span class="logo-eko">eko</span>
-                <span class="logo-lab">dev lab</span>
+                <span class="logo-lab">dev labs</span>
+                <span class="badge-mini">v2.4</span>
             </div>
             <nav class="nav-links">
-                <a href="#products">Products</a>
-                <a href="#buddy">Buddy</a>
-                <a href="#preorder">Pre-order</a>
-                <a href="#install">Firmware</a>
-                <a href="https://www.instagram.com/eko.dev.lab/" target="_blank" class="nav-ig">
+                <a href="#features">Features</a>
+                <a href="#clocks">10 Clocks</a>
+                <a href="#ecosystem">Ecosystem</a>
+                <a href="#gestures">Gestures</a>
+                <a href="#preorder">Reserve</a>
+                <a href="#install" class="nav-flash-btn"><span class="material-icons">bolt</span> Flash Web</a>
+                <a href="https://www.instagram.com/eko.dev.lab/" target="_blank" class="nav-ig" title="Follow on Instagram">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                     </svg>
                 </a>
                 <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
@@ -49,327 +52,348 @@
         <!-- HERO -->
         <section class="hero">
             <div class="hero-text">
-                <span class="hero-tag">⚡ not just another gadget</span>
-                <h1 class="hero-title">Your setup is <span class="gradient-text">missing something</span></h1>
-                <p class="hero-subtitle">Meet eko — desk companions that react, play games, navigate roads, and talk to
-                    you. Think of it as your anime sidekick, but IRL.</p>
-                <div class="hero-actions">
-                    <a href="#preorder" class="btn btn-primary-glitter">🔥 Join the Waitlist</a>
-                    <a href="#products" class="btn btn-outline">See all 3 products</a>
+                <div class="hero-badge-pill">
+                    <span class="pulse-dot"></span>
+                    <span>Collector-Grade • Priceless Companion</span>
                 </div>
-                <div class="hero-social-proof">
-                    <span class="material-icons">group</span>
-                    <span>Join <strong>early adopters</strong> who get it first</span>
+                <h1 class="hero-title">Your desk & car <span class="gradient-text">alive with personality</span></h1>
+                <p class="hero-subtitle">Meet <strong>eko buddy</strong> — the ultra-expressive companion featuring 10 animated retro clocks, multi-frame sprite studio, smart health reminders, arcade games, and live weather radar on a high-contrast OLED.</p>
+                
+                <div class="hero-actions">
+                    <a href="#install" class="btn btn-primary-glitter">
+                        <span class="material-icons">bolt</span> Flash eko Now (1-Click Web)
+                    </a>
+                    <a href="#preorder" class="btn btn-outline">
+                        <span class="material-icons">bookmark_border</span> Reserve Hardware
+                    </a>
+                </div>
+
+                <div class="hero-stats-row">
+                    <div class="stat-box">
+                        <span class="stat-num">10</span>
+                        <span class="stat-lbl">Animated Clocks</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-box">
+                        <span class="stat-num">40×40</span>
+                        <span class="stat-lbl">Multi-Frame Studio</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-box">
+                        <span class="stat-num">100%</span>
+                        <span class="stat-lbl">Open & Local REST/MQTT</span>
+                    </div>
                 </div>
             </div>
+
             <div class="hero-visual">
                 <div class="lab-frame">
-                    <img src="eko_buddy.jpeg" alt="eko Buddy — the red monster desk companion" class="hero-img">
+                    <div class="oled-sim-container">
+                        <div class="oled-sim-bezel">
+                            <div class="oled-screen" id="heroOledScreen">
+                                <!-- Interactive simulator content updated by script.js -->
+                                <div class="oled-render-box" id="oledRenderBox">
+                                    <div class="oled-demo-clock" id="simClockDisplay">
+                                        <div class="sim-scene-graphic" id="simSceneGraphic">🍄</div>
+                                        <div class="sim-main-time" id="simTimeText">10:42<span class="sim-sec">AM</span></div>
+                                        <div class="sim-mode-tag" id="simModeTag">SUPER MARIO CLOCK</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="oled-reflection"></div>
+                        </div>
+                        <div class="oled-sim-modes">
+                            <button class="sim-mode-btn active" data-sim="mario">🍄 Mario</button>
+                            <button class="sim-mode-btn" data-sim="pacman">🟡 Pac-Man</button>
+                            <button class="sim-mode-btn" data-sim="invaders">👾 Invaders</button>
+                            <button class="sim-mode-btn" data-sim="sprite">🚀 Sprite Alert</button>
+                            <button class="sim-mode-btn" data-sim="weather">🌦️ Weather</button>
+                        </div>
+                    </div>
+                    <img src="eko_buddy.jpeg" alt="eko buddy hardware device" class="hero-img">
                 </div>
             </div>
         </section>
 
-        <!-- WHY EKO SECTION -->
-        <section class="why-section">
-            <div class="why-container">
-                <h2 class="section-title">Why people are <span class="gradient-text">obsessed</span></h2>
-                <div class="why-grid">
-                    <div class="why-card">
-                        <span class="why-emoji">🎌</span>
-                        <h4>Anime-Level Expressions</h4>
-                        <p>Those pixel eyes aren't just for show. eko reacts to time, mood, and touch — like a
-                            Tamagotchi that actually grew up.</p>
-                    </div>
-                    <div class="why-card">
-                        <span class="why-emoji">🏎️</span>
-                        <h4>Built for Car & Desk Setups</h4>
-                        <p>Whether it's on your sim rig, car dashboard, or next to your keyboard — eko fits anywhere you
-                            spend your hours.</p>
-                    </div>
-                    <div class="why-card">
-                        <span class="why-emoji">🧠</span>
-                        <h4>Not Just a Display</h4>
-                        <p>Games, weather, market prices, navigation, AI conversations — it does things your phone
-                            shouldn't be interrupting you for.</p>
-                    </div>
-                    <div class="why-card">
-                        <span class="why-emoji">🔧</span>
-                        <h4>Hackable & Open</h4>
-                        <p>Flash custom firmware right from your browser. No apps, no accounts, no cloud dependency.
-                            Your device, your rules.</p>
-                    </div>
+        <!-- CORE FEATURE MATRIX -->
+        <section id="features" class="showcase-section">
+            <div class="showcase-header">
+                <span class="badge">⚡ Engineered for Joy</span>
+                <h2>Everything Built Inside <span class="gradient-text">eko buddy</span></h2>
+                <p>Not just a clock. A living, interactive companion running FreeRTOS on ESP32-C3 with zero cloud lock-in.</p>
+            </div>
+
+            <div class="feature-grid-v2">
+                <div class="feature-card-v2">
+                    <div class="card-icon-wrap cyan"><span class="material-icons">schedule</span></div>
+                    <h3>10 Animated Retro Clocks</h3>
+                    <p>Relive golden-era games: Super Mario brick jumps, Pac-Man pellet chomps, Space Invaders, Pong Breakout, Tetris matrix, Asteroids, Snake, and Dino Runner.</p>
+                    <div class="feature-tags"><span class="tag">NTP Synced</span><span class="tag">12/24 Hour</span><span class="tag">Pixel Art</span></div>
+                </div>
+
+                <div class="feature-card-v2">
+                    <div class="card-icon-wrap purple"><span class="material-icons">palette</span></div>
+                    <h3>Multi-Frame Sprite Studio</h3>
+                    <p>40×40 animation timeline (1–4 keyframes) with ghost onion skinning, D-pad nudging, live OLED looping player, and 128×64 full canvas typography streaming.</p>
+                    <div class="feature-tags"><span class="tag">Onion Skin</span><span class="tag">Hex Streamer</span><span class="tag">Emoji Glyph</span></div>
+                </div>
+
+                <div class="feature-card-v2">
+                    <div class="card-icon-wrap orange"><span class="material-icons">notifications_active</span></div>
+                    <h3>Smart Reminders & Scheduler</h3>
+                    <p>Hydration nudges (💧 Drink Water), posture resets (🧘 Stretch), medicine alerts (💊 Meds), coffee breaks, and autonomous LittleFS recurring schedule manager.</p>
+                    <div class="feature-tags"><span class="tag">Audio Chime</span><span class="tag">Progress Bar</span><span class="tag">LittleFS Saved</span></div>
+                </div>
+
+                <div class="feature-card-v2">
+                    <div class="card-icon-wrap green"><span class="material-icons">sports_esports</span></div>
+                    <h3>Retro Arcade Mini-Games</h3>
+                    <p>Built-in T-Rex Runner, Flappy Bird, and Car Avoidance with high-score tracking, obstacle physics, and audio chimes for instant distraction-free breaks.</p>
+                    <div class="feature-tags"><span class="tag">High Scores</span><span class="tag">1-Tap Physics</span><span class="tag">Buzzer Melodies</span></div>
+                </div>
+
+                <div class="feature-card-v2">
+                    <div class="card-icon-wrap red"><span class="material-icons">mood</span></div>
+                    <h3>Tamagotchi Living Companion</h3>
+                    <p>Organic mood states (Happy, Sleepy, Hungry, Playing, Grumpy, Alert). Feed snacks, pet ears, and trigger expressive touch poke reactions.</p>
+                    <div class="feature-tags"><span class="tag">Pet Loops</span><span class="tag">Poke Reactions</span><span class="tag">QGIF Binary</span></div>
+                </div>
+
+                <div class="feature-card-v2">
+                    <div class="card-icon-wrap blue"><span class="material-icons">wb_sunny</span></div>
+                    <h3>Live Weather & Radar</h3>
+                    <p>Real-time Open-Meteo local temperature, humidity, condition badges, and dynamic animated weather icons right on your desk.</p>
+                    <div class="feature-tags"><span class="tag">Auto Geo</span><span class="tag">Animated Icons</span><span class="tag">Fast Refresh</span></div>
+                </div>
+
+                <div class="feature-card-v2">
+                    <div class="card-icon-wrap emerald"><span class="material-icons">videocam</span></div>
+                    <h3>Camera Mirror & Dithering</h3>
+                    <p>Stream real-time CameraX video feed from your phone to eko's OLED using Bayer 8×8 ordered dithering over ultra-low-latency WebSockets.</p>
+                    <div class="feature-tags"><span class="tag">Bayer 8×8</span><span class="tag">WebSocket /ws_cam</span><span class="tag">15+ FPS</span></div>
+                </div>
+
+                <div class="feature-card-v2">
+                    <div class="card-icon-wrap yellow"><span class="material-icons">hub</span></div>
+                    <h3>Home Assistant & Local REST</h3>
+                    <p>Zero cloud required. Native MQTT auto-discovery, local web portal at <code>http://eko.local</code>, full REST API, and native Android companion app.</p>
+                    <div class="feature-tags"><span class="tag">MQTT HA</span><span class="tag">REST API</span><span class="tag">Native Kotlin</span></div>
                 </div>
             </div>
         </section>
 
-        <!-- THE ECOSYSTEM -->
-        <section id="products" class="products-section">
-            <h2 class="section-title">The <span class="gradient-text">Ecosystem</span></h2>
-            <p class="section-subtitle">Three devices. One vibe. Each one solves a different "I wish I had…" moment.</p>
+        <!-- 10 ANIMATED RETRO CLOCKS SECTION -->
+        <section id="clocks" class="clocks-showcase-section">
+            <div class="showcase-header">
+                <span class="badge">⏰ 10 Pixel Art Modes</span>
+                <h2>The Animated <span class="gradient-text">Clock Engine</span></h2>
+                <p>Switch styles with a single tap from the Android app, Web Dashboard, or gesture touch on eko buddy.</p>
+            </div>
+
+            <div class="clocks-grid">
+                <div class="clock-item-card">
+                    <div class="clock-icon">🍄</div>
+                    <h4>Super Mario World</h4>
+                    <p>Mario leaps and punches the mystery coin block every minute with animated coin sparks.</p>
+                </div>
+                <div class="clock-item-card">
+                    <div class="clock-icon">🟡</div>
+                    <h4>Pac-Man & Ghosts</h4>
+                    <p>Pac-Man chomps pellets and evades Blinky across a live pixel maze timeline.</p>
+                </div>
+                <div class="clock-item-card">
+                    <div class="clock-icon">👾</div>
+                    <h4>Space Invaders</h4>
+                    <p>Classic alien invaders march across the OLED screen with pulsing shields and cannons.</p>
+                </div>
+                <div class="clock-item-card">
+                    <div class="clock-icon">🏓</div>
+                    <h4>Pong Breakout</h4>
+                    <p>Two AI paddles volley the ball continuously, scoring digits on every point.</p>
+                </div>
+                <div class="clock-item-card">
+                    <div class="clock-icon">🐍</div>
+                    <h4>Snake Retro</h4>
+                    <p>Automated pixel snake hunts food dots around the time display without hitting borders.</p>
+                </div>
+                <div class="clock-item-card">
+                    <div class="clock-icon">🧱</div>
+                    <h4>Tetris Matrix</h4>
+                    <p>Falling tetrominoes build and clear lines to form the current time digits.</p>
+                </div>
+                <div class="clock-item-card">
+                    <div class="clock-icon">☄️</div>
+                    <h4>Asteroids Thrust</h4>
+                    <p>Vector spaceship blasts floating space rocks with particle trails.</p>
+                </div>
+                <div class="clock-item-card">
+                    <div class="clock-icon">🦖</div>
+                    <h4>Dino Desert Runner</h4>
+                    <p>Pixel T-Rex jumps over cacti and flying pterodactyls in an endless desert run.</p>
+                </div>
+                <div class="clock-item-card">
+                    <div class="clock-icon">🔢</div>
+                    <h4>Cyber Standard Digital</h4>
+                    <p>Crisp 8-bit typography with seconds tick, date, Wi-Fi signal, and battery metrics.</p>
+                </div>
+                <div class="clock-item-card">
+                    <div class="clock-icon">⚡</div>
+                    <h4>Large Digital Clock</h4>
+                    <p>Maximum visibility bold numbers engineered for clear view from across the room.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ECOSYSTEM SECTION -->
+        <section id="ecosystem" class="products-section">
+            <div class="showcase-header">
+                <span class="badge">🌟 The Hardware Family</span>
+                <h2>The <span class="gradient-text">eko Ecosystem</span></h2>
+                <p>Designed by Soham Dalwadi (eko dev labs). Collector-grade companions for every space.</p>
+            </div>
+
             <div class="product-grid">
-                <div class="product-card" data-product="eko-buddy">
-                    <div class="product-icon">
-                        <svg class="eye-blink" width="32" height="32" viewBox="0 0 32 32" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                <div class="product-card featured" data-product="eko-buddy">
+                    <div class="product-icon-box cyan">
+                        <svg class="eye-blink" width="36" height="36" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="4" y="12" width="8" height="8" fill="currentColor" />
                             <rect x="20" y="12" width="8" height="8" fill="currentColor" />
                         </svg>
                     </div>
-                    <span class="product-tag">Most Popular</span>
-                    <h3>eko Buddy</h3>
-                    <p>Your desk's personality. A red monster companion with pixel eyes, built-in games, and an attitude
-                        that matches your energy.</p>
-                    <a href="#preorder" class="btn-text">Pre-order Now →</a>
-                </div>
-                <div class="product-card" data-product="eko-drive">
-                    <div class="product-icon"><span class="material-icons">explore</span></div>
-                    <span class="product-tag">For Car Enthusiasts</span>
-                    <h3>eko Drive</h3>
-                    <p>Turn-by-turn navigation on a tiny OLED. No phone mount drama. Minimal, clean, and built for the
-                        dashboard.</p>
-                    <a href="#preorder" class="btn-text">Join Waitlist →</a>
-                </div>
-                <div class="product-card" data-product="eko-ai">
-                    <div class="product-icon"><span class="material-icons">settings_voice</span></div>
-                    <span class="product-tag">Coming Soon</span>
-                    <h3>eko AI</h3>
-                    <p>An AI voice companion that actually talks to you. Think J.A.R.V.I.S. but pocket-sized and on your
-                        desk.</p>
-                    <a href="#preorder" class="btn-text">Get Notified →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- eko Buddy Deep Dive -->
-        <section id="buddy" class="showcase-section">
-            <div class="showcase-header">
-                <span class="badge">⭐ Fan Favorite</span>
-                <h2>eko Buddy</h2>
-                <p>Think of it as a figure you'd collect — except this one has a brain, plays games, and judges your
-                    sleep schedule.</p>
-            </div>
-
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <span class="material-icons">face</span>
-                    <h4>Pixel Expressions</h4>
-                    <p>Happy, sleepy, alert, angry — eko's OLED eyes react to time and interaction. Like having a tiny
-                        anime character watching over your grind.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="material-icons">schedule</span>
-                    <h4>Always-On Clock</h4>
-                    <p>Clean, minimal time display that doesn't scream "look at me." 12h or 24h — you choose the vibe.
-                    </p>
-                </div>
-                <div class="feature-item">
-                    <span class="material-icons">videogame_asset</span>
-                    <h4>Mini Games</h4>
-                    <p>T-Rex Runner, Flappy Bird, and Car Avoidance built right in. Because sometimes your brain just
-                        needs a 2-minute escape.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="material-icons">cloud_queue</span>
-                    <h4>Weather & More</h4>
-                    <p><span class="coming-soon">Soon</span> Temperature, humidity, AQI — the info you want without
-                        unlocking your phone for the 47th time today.</p>
-                </div>
-            </div>
-
-            <div class="ui-flow-box">
-                <h4>Dead Simple Controls</h4>
-                <p class="ui-flow-desc">No manual needed. No app required. Just tap.</p>
-                <div class="flow-steps">
-                    <div class="step"><strong>Tap</strong> <span>Scroll</span></div>
-                    <div class="step"><strong>Long Press</strong> <span>Enter</span></div>
-                    <div class="step"><strong>Double-Tap</strong> <span>Exit</span></div>
-                    <div class="step"><strong>Idle 10s</strong> <span>Auto Exit</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Coming Soon / Roadmap -->
-        <section class="info-section">
-            <div class="info-grid">
-                <div class="info-text">
-                    <span class="badge">🛠️ Roadmap</span>
-                    <h2>What's cooking</h2>
-                    <p>We're shipping fast. Here's what's dropping next:</p>
-                    <ul class="future-list">
-                        <li><strong>Pomodoro Mode:</strong> Work sprints with visual feedback — no more forgetting to
-                            take breaks.</li>
-                        <li><strong>Context-Aware Moods:</strong> eko's personality evolves based on how you interact
-                            with it.</li>
-                        <li><strong>Health Reminders:</strong> Water, food, meds — subtle nudges, not annoying alarms.
-                        </li>
-                        <li><strong>Live Market Prices:</strong> Gold, Silver, Bitcoin — for the traders who don't want
-                            to open another tab.</li>
+                    <span class="product-tag popular">Desk Flagship</span>
+                    <h3>eko buddy</h3>
+                    <p>Your desk's living soul. Expressive pixel eyes, 10 animated retro clocks, multi-frame sprite studio, smart health alerts, and arcade mini-games.</p>
+                    <ul class="prod-highlights">
+                        <li>✓ 128×64 Ultra-Contrast OLED</li>
+                        <li>✓ ESP32-C3 Wi-Fi & Bluetooth LE</li>
+                        <li>✓ Capacitive Touch Gestures & Buzzer</li>
+                        <li>✓ LittleFS Animation Storage</li>
                     </ul>
+                    <a href="#install" class="btn btn-primary-glitter full-w">Flash eko buddy Now</a>
                 </div>
-                <div class="info-visual">
-                    <div class="glass-box">
-                        <span class="material-icons info-icon-large">rocket_launch</span>
+
+                <div class="product-card" data-product="eko-drive">
+                    <div class="product-icon-box red">
+                        <span class="material-icons">explore</span>
                     </div>
+                    <span class="product-tag car">Smart Car Companion</span>
+                    <h3>eko drive</h3>
+                    <p>Turn-by-turn navigation HUD and vehicle telematics on a high-visibility OLED. Minimalist, distraction-free, and mounted seamlessly on your dash.</p>
+                    <ul class="prod-highlights">
+                        <li>✓ Navigation Turn Directions & Distance</li>
+                        <li>✓ Speedometer & G-Force Telemetry</li>
+                        <li>✓ High-Temp Automotive Resilience</li>
+                        <li>✓ USB-C Dash Power Auto-Boot</li>
+                    </ul>
+                    <a href="#install" class="btn btn-outline full-w">Flash eko drive</a>
+                </div>
+
+                <div class="product-card" data-product="eko-ai">
+                    <div class="product-icon-box purple">
+                        <span class="material-icons">settings_voice</span>
+                    </div>
+                    <span class="product-tag upcoming">In Active Development</span>
+                    <h3>eko AI</h3>
+                    <p>A conversational AI voice companion that actually understands context. Pocket-sized intelligence on your desk with real-time audio synthesis.</p>
+                    <ul class="prod-highlights">
+                        <li>✓ Dual I2S Digital Mic Array</li>
+                        <li>✓ On-Device Wake-Word Detection</li>
+                        <li>✓ Low-Latency LLM Speech Pipeline</li>
+                        <li>✓ Smart Home Automation Commander</li>
+                    </ul>
+                    <a href="#preorder" class="btn btn-outline full-w">Get Early Access</a>
                 </div>
             </div>
         </section>
 
-        <!-- PRE-ORDER SECTION -->
-        <section id="preorder" class="preorder-section">
-            <div class="preorder-container">
-                <div class="preorder-header">
-                    <span class="badge">🔥 Limited Early Access</span>
-                    <h2>Reserve yours. No payment yet.</h2>
-                    <p>Drop your details below and we'll reach out when it's time. Early birds get priority + a special
-                        price. Zero commitment, zero spam.</p>
-                </div>
-                <form class="preorder-form" id="preorder-form"
-                    action="https://docs.google.com/forms/d/e/1FAIpQLSf0kKJdbmTL7Zitot-ADMujHnKDlJ3flXz8yM4Dcbb4ZmdxRw/formResponse"
-                    method="POST" target="hidden_iframe">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="preorder-name">Your Name *</label>
-                            <input type="text" id="preorder-name" name="entry.1625336618"
-                                placeholder="What should we call you?" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="preorder-email">Email *</label>
-                            <input type="email" id="preorder-email" name="entry.1835202422" placeholder="your@email.com"
-                                required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="preorder-phone">Phone / WhatsApp</label>
-                            <input type="tel" id="preorder-phone" name="entry.1507015622" placeholder="+91 XXXXX XXXXX">
-                        </div>
-                        <div class="form-group">
-                            <label for="preorder-product">Which product? *</label>
-                            <select id="preorder-product" name="entry.622514537" required>
-                                <option value="">Pick one…</option>
-                                <option value="eko Buddy">eko Buddy — Desk Companion</option>
-                                <option value="eko Drive">eko Drive — Car Navigation</option>
-                                <option value="eko AI">eko AI — Voice Companion</option>
-                                <option value="All Three">All Three (Bundle Interest)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="preorder-note">Anything you'd love to see?</label>
-                        <textarea id="preorder-note" name="entry.23249545" rows="3"
-                            placeholder="Custom color? Specific feature? We're listening..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary-glitter btn-submit">
-                        <span class="material-icons">favorite</span> Reserve My Spot
-                    </button>
-                    <p class="form-disclaimer">No payment required. We'll contact you when pre-order opens.</p>
-                </form>
-                <div class="preorder-success" id="preorder-success" style="display:none;">
-                    <span class="success-icon">🎉</span>
-                    <h3>You're in!</h3>
-                    <p>We've got your details. You'll hear from us before anyone else. Follow us on Instagram to stay in
-                        the loop!</p>
-                    <a href="https://www.instagram.com/eko.dev.lab/" target="_blank" class="btn btn-outline">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                        </svg>
-                        Follow @eko.dev.lab
-                    </a>
-                </div>
-                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="onFormSubmit()"></iframe>
-            </div>
-        </section>
-
-        <!-- INSTAGRAM CTA -->
-        <section class="ig-section">
-            <div class="ig-container">
-                <div class="ig-text">
-                    <h2>Watch eko come alive 👀</h2>
-                    <p>Build logs, expression demos, and sneak peeks — all on our Instagram. If you're into watching
-                        things get built from scratch, you'll love this.</p>
-                    <a href="https://www.instagram.com/eko.dev.lab/" target="_blank"
-                        class="btn btn-primary-glitter ig-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                        </svg>
-                        @eko.dev.lab
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- FLASHING SECTION -->
-        <section id="flashing" class="info-section alternate">
+        <!-- GESTURES & CONTROLS -->
+        <section id="gestures" class="info-section">
             <div class="info-grid">
-                <div class="info-visual">
-                    <div class="glass-box">
-                        <span class="material-icons info-icon-large">bolt</span>
+                <div class="info-text">
+                    <span class="badge">👆 Intuitive Touch</span>
+                    <h2>Dead Simple Controls</h2>
+                    <p>Zero friction. You don't need to open an app or read a manual. Eko responds to natural capacitive touch gestures.</p>
+                    <div class="gesture-flow-cards">
+                        <div class="gesture-box">
+                            <span class="gesture-key">Single Tap</span>
+                            <span class="gesture-desc">Cycle screens, clocks, or jump in games</span>
+                        </div>
+                        <div class="gesture-box">
+                            <span class="gesture-key">Long Press</span>
+                            <span class="gesture-desc">Enter sub-menus, launch timer, or start pet loop</span>
+                        </div>
+                        <div class="gesture-box">
+                            <span class="gesture-key">Double Tap</span>
+                            <span class="gesture-desc">Dismiss active alerts or exit game mode</span>
+                        </div>
+                        <div class="gesture-box">
+                            <span class="gesture-key">Idle 10s</span>
+                            <span class="gesture-desc">Auto-returns to your favorite clock or idle face</span>
+                        </div>
                     </div>
                 </div>
-                <div class="info-text">
-                    <h2>What is Flashing?</h2>
-                    <p>Flashing = installing new software on your eko. Think of it like updating your phone's OS, but
-                        for microcontrollers. One click. No tools. No coding.</p>
-                    <p>With <strong>eko dev lab</strong>, just plug in via USB and hit flash. We handle the rest through
-                        Web Serial — right in your browser. It's that easy.</p>
+                <div class="info-visual">
+                    <div class="touch-interactive-box">
+                        <div class="touch-indicator-ring"></div>
+                        <span class="material-icons touch-center-icon">touch_app</span>
+                        <p class="touch-label">Capacitive Touch Surface</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- FIRMWARE INSTALLER -->
+        <!-- FLASHING FIRMWARE INSTALLER -->
         <section id="install" class="flasher-section">
             <div class="flasher-container">
                 <div class="flasher-header">
-                    <h2>Firmware Installer</h2>
-                    <p>Already have an eko? Update your firmware below.</p>
+                    <span class="badge">⚡ Web Serial Installer</span>
+                    <h2>Install & Update Firmware in Seconds</h2>
+                    <p>Connect your eko device via USB-C and hit flash. No Arduino IDE, Python, or command line required. Works right inside Chrome and Edge.</p>
                 </div>
 
                 <div class="flasher-grid">
                     <div class="config-card">
                         <div class="card-header">
-                            <span class="material-icons">settings</span> Configuration
+                            <span class="material-icons">tune</span> 1. Select Configuration
                         </div>
                         <div class="control-group">
-                            <label>Product</label>
+                            <label for="product-select">Target Device</label>
                             <select id="product-select">
-                                <option value="eko-buddy">eko Buddy</option>
-                                <option value="eko-drive">eko Drive</option>
-                                <option value="eko-ai">eko AI</option>
+                                <option value="eko-buddy" selected>eko buddy (Desk Companion)</option>
+                                <option value="eko-drive">eko drive (Smart Car HUD)</option>
                             </select>
                         </div>
                         <div class="control-group">
-                            <label>Build Type</label>
+                            <label for="build-select">Firmware Stream</label>
                             <select id="build-select">
-                                <option value="release">Official Release</option>
-                                <option value="debug">Beta / Debug</option>
+                                <option value="release" selected>Official Release (Stable)</option>
+                                <option value="debug">Beta / Debug Stream</option>
                             </select>
                         </div>
                         <button class="btn btn-secondary" id="refresh-btn">
-                            <span class="material-icons">refresh</span> Check for Updates
+                            <span class="material-icons">refresh</span> Check for Latest Builds
                         </button>
                     </div>
 
                     <div class="config-card">
                         <div class="card-header">
-                            <span class="material-icons">info_outline</span> Firmware Details
+                            <span class="material-icons">verified</span> 2. Release Manifest
                         </div>
                         <div class="stats-grid">
                             <div class="stat-item">
-                                <span class="label">Version</span>
-                                <span class="value" id="version">...</span>
+                                <span class="label">Version Tag</span>
+                                <span class="value highlight-cyan" id="version">Checking...</span>
                             </div>
                             <div class="stat-item">
-                                <span class="label">Size</span>
+                                <span class="label">Firmware Size</span>
                                 <span class="value" id="firmware-size">...</span>
                             </div>
                             <div class="stat-item">
-                                <span class="label">Timestamp</span>
+                                <span class="label">Build Date</span>
                                 <span class="value" id="timestamp">...</span>
                             </div>
                             <div class="stat-item full-width">
-                                <span class="label">MD5 Checksum</span>
+                                <span class="label">MD5 Verification Hash</span>
                                 <span class="value mono" id="firmware-md5">...</span>
                             </div>
                         </div>
@@ -377,34 +401,106 @@
                 </div>
 
                 <div class="flash-action-area">
-                    <esp-web-install-button id="install-btn" manifest="manifest.json">
-                        <button class="btn btn-flash" slot="activate">
-                            <span class="material-icons">usb</span> Connect & Flash Now
-                        </button>
-                        <span slot="unsupported" class="error-msg">Your browser does not support Web Serial. Use Chrome
-                            or Edge.</span>
-                        <span slot="not-allowed" class="error-msg">Serial access is blocked. Please allow and
-                            reload.</span>
-                    </esp-web-install-button>
-                    <p class="flash-hint">Requires Chrome or Edge 89+. Connect your device via USB before clicking.</p>
+                    <div class="flash-btn-wrapper">
+                        <esp-web-install-button id="install-btn" manifest="eko-buddy/release/manifest.json">
+                            <button class="btn btn-flash-huge" slot="activate">
+                                <span class="material-icons">usb</span> Connect USB & Flash Eko Now
+                            </button>
+                            <span slot="unsupported" class="error-msg">
+                                ⚠️ Web Serial is not supported in this browser. Please open this page in Google Chrome, Microsoft Edge, or Opera.
+                            </span>
+                            <span slot="not-allowed" class="error-msg">
+                                ⚠️ Serial port access was denied. Please grant permission in the browser prompt.
+                            </span>
+                        </esp-web-install-button>
+                    </div>
+                    <div class="flash-steps-guide">
+                        <div class="guide-step"><span class="num">1</span> Plug eko into your PC using a data-capable USB-C cable.</div>
+                        <div class="guide-step"><span class="num">2</span> Click <strong>Connect USB & Flash Eko Now</strong> above.</div>
+                        <div class="guide-step"><span class="num">3</span> Select your ESP32-C3 serial port (e.g. <code>USB JTAG/serial debug unit</code>).</div>
+                        <div class="guide-step"><span class="num">4</span> Watch the progress bar flash firmware and LittleFS assets automatically!</div>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- PRE-ORDER / WAITLIST SECTION -->
+        <section id="preorder" class="preorder-section">
+            <div class="preorder-container">
+                <div class="preorder-header">
+                    <span class="badge">💎 Reserve Hardware</span>
+                    <h2>Join the Early Adopter Batch</h2>
+                    <p>Reserve your numbered collector-grade unit. Zero payment required now. Early supporters receive exclusive custom color housings and VIP updates.</p>
+                </div>
+                <form class="preorder-form" id="preorder-form"
+                    action="https://docs.google.com/forms/d/e/1FAIpQLSf0kKJdbmTL7Zitot-ADMujHnKDlJ3flXz8yM4Dcbb4ZmdxRw/formResponse"
+                    method="POST" target="hidden_iframe">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="preorder-name">Full Name *</label>
+                            <input type="text" id="preorder-name" name="entry.1625336618" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="preorder-email">Email Address *</label>
+                            <input type="email" id="preorder-email" name="entry.1835202422" placeholder="you@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="preorder-phone">WhatsApp / Phone Number</label>
+                            <input type="tel" id="preorder-phone" name="entry.1507015622" placeholder="+91 98765 43210">
+                        </div>
+                        <div class="form-group">
+                            <label for="preorder-product">Preferred Device *</label>
+                            <select id="preorder-product" name="entry.622514537" required>
+                                <option value="eko Buddy" selected>eko buddy — Desk Companion</option>
+                                <option value="eko Drive">eko drive — Smart Car HUD</option>
+                                <option value="eko AI">eko AI — Voice Assistant</option>
+                                <option value="All of them">Full Collector Bundle (All Devices)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="preorder-color">Custom Shell Color Preference</label>
+                        <select id="preorder-color" name="entry.1706915228">
+                            <option value="Signature Cyber Red">Signature Cyber Red (Classic)</option>
+                            <option value="Matte Stealth Black">Matte Stealth Black</option>
+                            <option value="Frost Neon Cyan">Frost Neon Cyan</option>
+                            <option value="Retro White">Retro Off-White</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary-glitter full-w btn-submit">
+                        <span class="material-icons">rocket_launch</span> Confirm My Early Access Spot
+                    </button>
+                </form>
+                <div id="preorder-success" class="preorder-success-box" style="display: none;">
+                    <span class="material-icons success-icon">check_circle</span>
+                    <h3>You're on the VIP list!</h3>
+                    <p>Thank you for supporting <strong>eko dev labs</strong>. Founder <strong>Soham Dalwadi</strong> will reach out with early batch updates and your exclusive reservation code.</p>
+                </div>
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.onFormSubmit) window.onFormSubmit();"></iframe>
             </div>
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-content">
-            <div class="footer-logo">eko dev lab</div>
+            <div class="footer-brand">
+                <div class="footer-logo">eko dev labs</div>
+                <p class="footer-tagline">Collector-grade, priceless desk and car companion designed with passion.</p>
+            </div>
             <div class="footer-links">
-                <a href="https://www.instagram.com/eko.dev.lab/" target="_blank">Instagram</a>
-                <a href="https://github.com/sohamdalwadi" target="_blank">GitHub</a>
+                <a href="#features">Features</a>
+                <a href="#clocks">Clocks</a>
+                <a href="#install">Firmware Flasher</a>
                 <a href="#preorder">Pre-order</a>
-                <a href="#">Support</a>
+                <a href="https://www.instagram.com/eko.dev.lab/" target="_blank">Instagram (@eko.dev.lab)</a>
+                <a href="https://github.com/sohamdalwadi" target="_blank">GitHub</a>
             </div>
-            <div class="footer-ig-handle">
-                <p>Stay updated: <a href="https://www.instagram.com/eko.dev.lab/" target="_blank">@eko.dev.lab</a></p>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Soham Dalwadi. All rights reserved. Built with obsession for the eko ecosystem.</p>
             </div>
-            <p class="copyright">&copy; 2026 Soham Dalwadi. Built with obsession for the eko ecosystem.</p>
         </div>
     </footer>
 
